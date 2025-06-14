@@ -1,0 +1,67 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* body {
+    background-color: black;
+    color: white;
+}
+
+.left {
+    width: 25vw;
+}
+
+.right {
+    width: 75vw;
+}
+
+.home ul li {
+    display: flex;
+    width: 15px;
+    list-style: none;
+    gap: 10px;
+    padding-top: 14px;
+    font-weight: bold;
+}
+
+.bg-black {
+    background-color: black;
+    color: white;
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.bg-gray {
+    background-color: #121212;
+}
+
+.rounded {
+    border-radius: 7px;
+}
+
+.m-1 {
+    margin: 13px;
+}
+
+.library{
+    min-height: 80vh;
+    position: relative;
+}
+.footer a {
+    display: flex;
+    color: grey;
+    gap: 13px;
+    position: absolute;
+    bottom: 0;
+    
+}
+
+.footer a{
+    color: grey;
+   gap: 3px;
+}
