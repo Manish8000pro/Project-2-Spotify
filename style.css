@@ -52,16 +52,13 @@
     min-height: 80vh;
     position: relative;
 }
-.footer a {
-    display: flex;
+.footer  {
     color: grey;
-    gap: 13px;
+    gap: 15px;
     position: absolute;
     bottom: 0;
-    
+    text-decoration: none;
 }
-
 .footer a{
-    color: grey;
-   gap: 4px;
+    color: gray;
 }
