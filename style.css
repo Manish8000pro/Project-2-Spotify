@@ -58,6 +58,7 @@
     position: absolute;
     bottom: 0;
     text-decoration: none;
+    padding: 10px;
     /* flex-wrap: wrap; */
 }
 .footer a{
@@ -100,6 +101,8 @@
     width: 200px;
     border-radius: 5px;
     background-color: #252525;
+    position: relative;
+
 }
 .card > *{
     padding-top: 10px;
@@ -107,4 +110,11 @@
 .card img{
     width:100%;
     object-fit: contain;
+}
+.play{
+    position:absolute;
+    top: 150px;
+    right: 20px;
+    opacity: 0px;
+    transition: all 1s ease-out;
 }
