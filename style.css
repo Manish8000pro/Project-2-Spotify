@@ -72,6 +72,7 @@
 
 .right {
     margin-left: 2px;
+    position:relative;
 }
 
 .nav {
@@ -157,4 +158,13 @@
     color: black;
     width: 81px; 
     
+}
+.playbar{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(25, 54, 25);
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
 }
