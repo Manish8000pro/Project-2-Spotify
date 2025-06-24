@@ -172,3 +172,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.songlist ul{
+    padding: 0 12px;
+}
+
+.songlist ul li {
+    list-style-type: decimal;
+}

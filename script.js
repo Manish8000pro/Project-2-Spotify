@@ -19,8 +19,20 @@ async function getsongs() {
 async function main() {
     let songs = await getsongs()
     console.log(songs)
+
+    let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
+    for (const song of songs) {
+        songUL.innerHTML = songUL.innerHTML + `<li> ${song} </li>`;
+    }
     // play the first song
-    var myAudio = new Audio(songs[0]);
-    Audio.play();
+    var audio = new Audio(songs[1]);
+    audio.play();
+
+    audio.addEventListener("loadeddata", () => {
+        let duration = (audio.duration, audio.currentSrc, audio.currentTime)
+        console.log(duration)
+        // The duration variable now holds the duration (in seconds) of the audio clip
+    });
 }
+
 main()
