@@ -17,6 +17,7 @@ async function getsongs() {
     return songs
 }
 async function main() {
+    // Get the list of all the songs
     let songs = await getsongs()
     console.log(songs)
 
@@ -24,11 +25,10 @@ async function main() {
     var audio = new Audio(songs[0]);
     audio.play();
 
-    audio.addEventListener("loadeddata", () => {
-        let duration = (audio.duration, audio.currentSrc, audio.currentTime)
+    audio.Element.addEventListener("loadeddata", () => {
+        let duration = audio.duration;
         console.log(duration)
         // The duration variable now holds the duration (in seconds) of the audio clip
     });
 }
-
 main()
