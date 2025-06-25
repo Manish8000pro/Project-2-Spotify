@@ -22,10 +22,10 @@ async function main() {
     console.log(songs)
 
     // play the first song
-    var audio = new Audio(songs[0]);
+    var audio = new Audio(songs[1]);
     audio.play();
 
-    audio.Element.addEventListener("loadeddata", () => {
+    audio.addEventListener("loadeddata", () => {
         let duration = audio.duration;
         console.log(duration)
         // The duration variable now holds the duration (in seconds) of the audio clip
