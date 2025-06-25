@@ -20,12 +20,8 @@ async function main() {
     let songs = await getsongs()
     console.log(songs)
 
-    let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
-    for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `<li> ${song} </li>`;
-    }
     // play the first song
-    var audio = new Audio(songs[1]);
+    var audio = new Audio(songs[0]);
     audio.play();
 
     audio.addEventListener("loadeddata", () => {
