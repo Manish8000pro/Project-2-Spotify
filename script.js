@@ -16,19 +16,29 @@ async function getsongs() {
     }
     return songs
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  main();
+});
+
 async function main() {
-    // Get the list of all the songs
-    let songs = await getsongs()
-    console.log(songs)
+  let songs = await getsongs();
+  console.log(songs);
 
-    // play the first song
-    var audio = new Audio(songs[1]);
-    audio.play();
+  let songUL = document.querySelector(".songlist ul"); // ✅ fixed case
 
-    audio.addEventListener("loadeddata", () => {
-        let duration = audio.duration;
-        console.log(duration)
-        // The duration variable now holds the duration (in seconds) of the audio clip
-    });
+  for (const song of songs) {
+    let li = document.createElement("li");
+    li.textContent = song;
+    songUL.appendChild(li);
+  }
+
+  let audio = new Audio(songs[0]);
+  audio.play();
+
+  audio.addEventListener("loadeddata", () => {
+    console.log(audio.duration, audio.currentSrc, audio.currentTime);
+  });
 }
-main()
+
+
