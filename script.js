@@ -11,7 +11,7 @@ async function getsongs() {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href)
+            songs.push(element.href.split("/song")[1])
         }
     }
     return songs
@@ -31,6 +31,7 @@ async function main() {
     let li = document.createElement("li");
     li.textContent = song;
     songUL.appendChild(li);
+    
     
   }
 
