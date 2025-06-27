@@ -31,6 +31,7 @@ async function main() {
     let li = document.createElement("li");
     li.textContent = song;
     songUL.appendChild(li);
+    
   }
 
   let audio = new Audio(songs[0]);
