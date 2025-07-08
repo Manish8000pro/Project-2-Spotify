@@ -35,7 +35,7 @@ async function main() {
 
   }
 
-  let audio = new Audio(songs[0]);
+  let audio = new Audio(songs[1]);
   audio.play();
 
   audio.addEventListener("loadeddata", () => {
