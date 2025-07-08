@@ -35,9 +35,8 @@ async function main() {
 
   }
 
-  let audio = new Audio(songs[1]);
+  let audio = new Audio(songs[0]);
   audio.play();
-
   audio.addEventListener("loadeddata", () => {
     console.log(audio.duration, audio.currentSrc, audio.currentTime);
   });
