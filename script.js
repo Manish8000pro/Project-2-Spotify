@@ -31,17 +31,15 @@ async function main() {
     let li = document.createElement("li");
     li.textContent = song;
     songUL.appendChild(li);
-
-
+    
   }
 
-  let audio = new Audio(songs[0]);
-  audio.play();
+        let audio = new Audio(songs[0]);
+        audio.play();
   audio.addEventListener("loadeddata", () => {
-    console.log(audio.duration, audio.currentSrc, audio.currentTime);
+          console.log(audio.duration, audio.currentSrc, audio.currentTime);
   });
 }
-
 
 
 

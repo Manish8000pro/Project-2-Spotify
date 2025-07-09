@@ -174,9 +174,27 @@
 }
 
 .songlist ul{
-    padding: 0 42px;
+    padding: 0 12px;
 }
 
 .songlist ul li {
     list-style-type: decimal;
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+    padding: 10px 0;
+    border: 1px solid white;
+    margin: 5px 0px;
+    padding: 5px;
+    border-radius: 3px;
+}
+.playnow{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.playnow span{
+    font-size: 15px;
+    width: 70px;
+    
 }
