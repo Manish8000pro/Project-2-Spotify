@@ -180,9 +180,9 @@
 .songlist ul li {
     list-style-type: decimal;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     cursor: pointer;
-    padding: 10px 0;
+    padding: 5px 0;
     border: 1px solid white;
     margin: 5px 0px;
     padding: 5px;
