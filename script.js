@@ -18,8 +18,9 @@ async function getsongs() {
 }
 
 const playMusic = (track) => {
-  let audio = new Audio("/songs/" + track);
-  audio.play();
+  let audio = new Audio(`/songs/${track}`);  // ✅ Correct path
+  console.log("Trying to play:", `/songs/${track}`);
+  audio.play().catch(err => console.error("Audio play error:", err));
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,14 +58,13 @@ async function main() {
 
   }
   // attach evantlistner to each song
-  Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
-    e.addEventListener("click", element => {
-      console.log(e.querySelector(".info").firstElementChild.innerHTML);
-      playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
-      
+   Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(li => {
+    li.addEventListener("click", () => {
+      let name = li.querySelector(".info").firstElementChild.innerHTML.trim();
+      let filename = name + ".mp3";  // ✅ Add ".mp3" if missing
+      playMusic(filename);
     });
   });
-
 
 }
 
