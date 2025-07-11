@@ -1,4 +1,25 @@
 console.log("lets write the javascript")
+let currentsong = new Audio();
+// function formatTime(seconds) {
+//   const mins = Math.floor(seconds / 60);
+//   const secs = Math.floor(seconds % 60);
+  
+//   // Pad with leading zero if needed
+//   const formattedMins = mins.toString().padStart(2, '0');
+//   const formattedSecs = secs.toString().padStart(2, '0');
+  
+//   return `${formattedMins}:${formattedSecs}`;
+// }
+
+function secondsToMinuteSeconds(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+
+
+
 
 async function getsongs() {
   let a = await fetch("http://127.0.0.1:5500/songs/")
@@ -17,11 +38,28 @@ async function getsongs() {
   return songs
 }
 
+// const playMusic = (track) => {
+//   // let audio = new Audio(`/songs/${track}`);  // ✅ Correct path
+//   console.log(`${track}`);
+//   currentsong.src(`/songs/${track}`)
+//   currentsong.play()
+// };
+
 const playMusic = (track) => {
-  let audio = new Audio(`/songs/${track}`);  // ✅ Correct path
-  console.log("Trying to play:", `/songs/${track}`);
-  audio.play().catch(err => console.error("Audio play error:", err));
+  // ✅ Stop and reset the current song if it’s playing
+  currentsong.pause();
+  currentsong.currentTime = 0;
+
+  // ✅ Load and play the new song
+  currentsong.src = `/songs/${track}`;
+  console.log(`${track}`);
+  currentsong.play()
+  play.src = "pause.svg"
+  document.querySelector(".songinfo").innerHTML = track
+  document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
 };
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   main();
@@ -29,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function main() {
 
-  let currentsong;
+  
 
   // Get the  list of all the  songs
   let songs = await getsongs();
@@ -63,9 +101,29 @@ async function main() {
       let name = li.querySelector(".info").firstElementChild.innerHTML.trim();
       let filename = name + ".mp3";  // ✅ Add ".mp3" if missing
       playMusic(filename);
+      currentSong = new Audio(`/songs/${filename}`);
     });
   });
+  
 
+  // Attach an evantlistner to Play, pause and previous song;
+  play.addEventListener("click", ()=>{
+    if (currentsong.paused){
+      currentsong.play()
+      play.src = "pause.svg"
+    }
+    else{
+      currentsong.pause()
+      play.src = "play.svg"
+    }
+  })
+   // listen for time update Evant
+   currentsong.addEventListener("timeupdate", () => {
+  if (!isNaN(currentsong.duration)) {
+    document.querySelector(".songtime").innerHTML = 
+      `${secondsToMinuteSeconds(currentsong.currentTime)} / ${secondsToMinuteSeconds(currentsong.duration)}`;
+  }
+});
 }
 
 
