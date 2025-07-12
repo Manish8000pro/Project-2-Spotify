@@ -26,7 +26,7 @@ async function getsongs() {
 }
 
 
-const playMusic = (track, pause = false) => {
+const playMusic = (track ,pause = false) => {
   // ✅ Stop and reset the current song if it’s playing
   currentsong.pause();
   currentsong.currentTime = 0;
@@ -36,8 +36,8 @@ const playMusic = (track, pause = false) => {
   console.log(`${track}`);
   if (pause!==true) {
     currentsong.play()
-    
   }
+
 play.src = "pause.svg"
   document.querySelector(".songinfo").innerHTML = decodeURI(track.replace(".mp3", ""));
   document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
@@ -56,7 +56,7 @@ async function main() {
   // Get the  list of all the  songs
   let songs = await getsongs();
   let firstTrack = songs[0].split("/songs/")[1]; // Just the filename
-  playMusic(firstTrack, false);
+  playMusic(firstTrack,false);
 
   console.log(songs);
 
@@ -102,14 +102,16 @@ async function main() {
     else {
       currentsong.pause()
       play.src = "play.svg"
+      
     }
+
   })
   // listen for time update Evant
   currentsong.addEventListener("timeupdate", () => {
     if (!isNaN(currentsong.duration)) {
       document.querySelector(".songtime").innerHTML =
-        `${secondsToMinuteSeconds(currentsong.currentTime)} / ${secondsToMinuteSeconds(currentsong.duration)}`;
-    }
+        `${secondsToMinuteSeconds(currentsong.currentTime)} / ${secondsToMinuteSeconds(currentsong.duration)}`;}
+        document.querySelector(".circle").style.left = (currentsong.currentTime/currentsong.duration)*100 +"%";
   });
 }
 
