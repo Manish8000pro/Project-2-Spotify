@@ -26,7 +26,7 @@ async function getsongs() {
 }
 
 
-const playMusic = (track ,pause = false) => {
+const playMusic = (track, pause = false) => {
   // ✅ Stop and reset the current song if it’s playing
   currentsong.pause();
   currentsong.currentTime = 0;
@@ -34,11 +34,12 @@ const playMusic = (track ,pause = false) => {
   // ✅ Load and play the new song
   currentsong.src = `/songs/${track}`;
   console.log(`${track}`);
-  if (pause!==true) {
+  if (pause !== false) {
     currentsong.play()
+
   }
 
-play.src = "pause.svg"
+  // play.src = "pause.svg"
   document.querySelector(".songinfo").innerHTML = decodeURI(track.replace(".mp3", ""));
   document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
 };
@@ -56,7 +57,7 @@ async function main() {
   // Get the  list of all the  songs
   let songs = await getsongs();
   let firstTrack = songs[0].split("/songs/")[1]; // Just the filename
-  playMusic(firstTrack,false);
+  playMusic(firstTrack, false);
 
   console.log(songs);
 
@@ -102,7 +103,7 @@ async function main() {
     else {
       currentsong.pause()
       play.src = "play.svg"
-      
+
     }
 
   })
@@ -110,9 +111,22 @@ async function main() {
   currentsong.addEventListener("timeupdate", () => {
     if (!isNaN(currentsong.duration)) {
       document.querySelector(".songtime").innerHTML =
-        `${secondsToMinuteSeconds(currentsong.currentTime)} / ${secondsToMinuteSeconds(currentsong.duration)}`;}
-        document.querySelector(".circle").style.left = (currentsong.currentTime/currentsong.duration)*100 +"%";
+        `${secondsToMinuteSeconds(currentsong.currentTime)} / ${secondsToMinuteSeconds(currentsong.duration)}`;
+    }
+    document.querySelector(".circle").style.left = (currentsong.currentTime / currentsong.duration) * 100 + "%";
   });
+
+  // add evantlistner to seekbar 
+  document.querySelector(".seekbar").addEventListener("click", e => {
+    let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+    document.querySelector(".circle").style.left = percent + "%";
+    currentsong.currentTime = ((currentsong.duration) * percent / 100)
+  })
+
+  // Add Evantlistner for hamburger 
+  document.querySelector(".hamburger").addEventListener("click",e=>{
+    document.querySelector(".left").style.left = "0"
+  })
 }
 
 
