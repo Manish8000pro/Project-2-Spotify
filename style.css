@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+.close{
+        display: none;
+    }
 
 * body {
     background-color: black;
@@ -90,11 +93,13 @@
 .header * {
     padding: 7px;
 }
+.spotifyplaylist h1{
+    padding: 16px;
+}
 
 .cardcontainer {
     margin: 30px;
     display: flex;
-    justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
     overflow-y: auto;
@@ -168,7 +173,7 @@
     position: fixed;
     bottom: 30px;
     background-color: rgb(60, 61, 60);
-    width:  68vw;
+    width:  69vw;
     min-height: 30px;
     padding: 12px;
     border-radius: 20px;
@@ -236,7 +241,7 @@
 
 .seekbar {
     height: 2px;
-    width: 98%;
+    width: 97%;
     border: 2px solid white;
     background: white;
     position: absolute;
@@ -276,7 +281,7 @@
         left: -130%;
         transition: all .3s ease-in-out;
         z-index: 1;
-        width: 370px;
+        width:390px;
 
     }
 
@@ -303,11 +308,30 @@
     .card{
         width: 90vw;
     }
+    .cardcontainer{
+        margin: 0;
+        justify-content: center;
+    }
+    .playbar{
+        width: calc(100vw - 5vw);
+    }
+    .seekbar{
+        width: calc(100vw - 5vw);
+    }
 
     .hamburger {
         display: block;
     }
-    .cardcontainer{
+    .right{
         margin: 0;
     }
+    .close{
+        display: block;
+    }
+    .abovebar{
+        flex-direction: column;
+        gap: 23px;
+        align-items: center;
+    }
+    
 }
