@@ -1,6 +1,7 @@
 console.log("lets write the javascript")
 let currentsong = new Audio();
 
+let songs;
 
 function secondsToMinuteSeconds(seconds) {
   const mins = Math.floor(seconds / 60);
@@ -55,7 +56,7 @@ async function main() {
 
 
   // Get the  list of all the  songs
-  let songs = await getsongs();
+  songs = await getsongs();
   let firstTrack = songs[0].split("/songs/")[1]; // Just the filename
   playMusic(firstTrack, false);
 
@@ -134,4 +135,55 @@ async function main() {
   document.querySelector(".close").addEventListener("click", () => {
     document.querySelector(".left").style.left = "-130%"
   })
+
+  // Add an Evant listener for previous
+
+  previous.addEventListener("click", () => {
+  console.log("previous clicked");
+  let currentFilename = currentsong.src.split("/").pop();
+  let filenames = songs.map(song => song.split("/").pop());
+  let index = filenames.indexOf(currentFilename);
+
+  if (index !== -1) {
+    let prevIndex = (index - 1 + filenames.length) % filenames.length;
+    let prevTrack = filenames[prevIndex];
+    playMusic(prevTrack, true);
+  } else {
+    console.error("Current song not found in list.");
+  }
+});
+
+  
+
+
+  // Add an Evant listener for next
+  next.addEventListener("click", () => {
+  console.log("next clicked");
+
+  // ✅ Extract current filename from the audio src
+  let currentFilename = currentsong.src.split("/").pop();
+
+  // ✅ Normalize songs list to just filenames
+  let filenames = songs.map(song => song.split("/").pop());
+
+  // ✅ Find index of current song
+  let index = filenames.indexOf(currentFilename);
+
+  if (index !== -1) {
+    // ✅ Calculate next song index (wrap around to 0 if at the end)
+    let nextIndex = (index + 1) % filenames.length;
+
+    // ✅ Get the filename of the next song
+    let nextTrack = filenames[nextIndex];
+
+    // ✅ Play it
+    playMusic(nextTrack, true);
+  } else {
+    console.error("Current song not found in list.");
+  }
+});
+
+
+
+  
 }
