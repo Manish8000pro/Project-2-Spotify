@@ -186,11 +186,26 @@
     align-items: center;
     width: 250px;
 }
-.songinfo, .songtime {
-  width: 180px; /* Reserve space so they don't affect layout */
+.timevol{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.songinfo {
+  width: 130px; /* Reserve space so they don't affect layout */
   text-align: center;
 }
-
+.songtime {
+  width: 130px; /* Reserve space so they don't affect layout */
+  text-align: center;
+}
+.volume{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .songlist ul {
     padding: 0 10px;
 }
@@ -304,6 +319,13 @@
         top: 25px;
         width: 29px;
     }
+    .timevol{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
 
     .playbar {
         width: calc(100vw - 20vw);
@@ -350,7 +372,7 @@
     }
     .button{
         width: 200px;
-        padding: 50px;
+        padding: 25px;
     }
     
 }
