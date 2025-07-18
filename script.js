@@ -188,7 +188,11 @@ async function main() {
   }
 });
 
+// Add an event to volume
 
-
-  
+  document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",
+    (e)=>{
+      console.log("setting volume to", e,e.target,e.target.value)
+      currentsong.volume = parseInt(e.target.value)/100
+    })
 }
