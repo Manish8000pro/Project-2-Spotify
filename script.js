@@ -28,21 +28,26 @@ async function getsongs() {
 
 
 const playMusic = (track, pause = false) => {
-  // ✅ Stop and reset the current song if it’s playing
+  // Stop the current song
   currentsong.pause();
   currentsong.currentTime = 0;
 
-  // ✅ Load and play the new song
+  // Set the new song
   currentsong.src = `/songs/${track}`;
   console.log(`${track}`);
-  if (pause !== false) {
-    currentsong.play()
 
+  // Play if not paused by user
+  if (pause !== false) {
+    currentsong.play();
+    play.src = "pause.svg";
+    isPlaying = true;
+  } else {
+    play.src = "play.svg";
+    isPlaying = false;
   }
 
-  // play.src = "pause.svg"
   document.querySelector(".songinfo").innerHTML = decodeURI(track.replace(".mp3", ""));
-  document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+  document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
 };
 
 

@@ -184,6 +184,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 250px;
+}
+.songinfo, .songtime {
+  width: 180px; /* Reserve space so they don't affect layout */
+  text-align: center;
 }
 
 .songlist ul {
@@ -333,6 +338,19 @@
         flex-direction: column;
         gap: 23px;
         align-items: center;
+    }
+
+    .songtime,.songinfo{
+        width: auto;
+    }
+
+    .button{
+        width: 175px;
+        padding: 25px;
+    }
+    .button{
+        width: 200px;
+        padding: 50px;
     }
     
 }
