@@ -388,6 +388,7 @@
     .button{
         width: 160px;
     }
+
     @media (max-width: 1200px){
         .card{
             width: 200px;
@@ -397,6 +398,7 @@
     .card{
         width: 320px;
     }
+    
     .cardcontainer :hover{
     background-color: rgb(59, 58, 58);
     cursor: pointer;
