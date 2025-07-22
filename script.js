@@ -144,55 +144,71 @@ async function main() {
   // Add an Evant listener for previous
 
   previous.addEventListener("click", () => {
-  console.log("previous clicked");
-  let currentFilename = currentsong.src.split("/").pop();
-  let filenames = songs.map(song => song.split("/").pop());
-  let index = filenames.indexOf(currentFilename);
+    console.log("previous clicked");
+    let currentFilename = currentsong.src.split("/").pop();
+    let filenames = songs.map(song => song.split("/").pop());
+    let index = filenames.indexOf(currentFilename);
 
-  if (index !== -1) {
-    let prevIndex = (index - 1 + filenames.length) % filenames.length;
-    let prevTrack = filenames[prevIndex];
-    playMusic(prevTrack, true);
-  } else {
-    console.error("Current song not found in list.");
-  }
-});
+    if (index !== -1) {
+      let prevIndex = (index - 1 + filenames.length) % filenames.length;
+      let prevTrack = filenames[prevIndex];
+      playMusic(prevTrack, true);
+    } else {
+      console.error("Current song not found in list.");
+    }
+  });
 
-  
+
 
 
   // Add an Evant listener for next
   next.addEventListener("click", () => {
-  console.log("next clicked");
+    console.log("next clicked");
 
-  // ✅ Extract current filename from the audio src
-  let currentFilename = currentsong.src.split("/").pop();
+    // ✅ Extract current filename from the audio src
+    let currentFilename = currentsong.src.split("/").pop();
 
-  // ✅ Normalize songs list to just filenames
-  let filenames = songs.map(song => song.split("/").pop());
+    // ✅ Normalize songs list to just filenames
+    let filenames = songs.map(song => song.split("/").pop());
 
-  // ✅ Find index of current song
-  let index = filenames.indexOf(currentFilename);
+    // ✅ Find index of current song
+    let index = filenames.indexOf(currentFilename);
 
-  if (index !== -1) {
-    // ✅ Calculate next song index (wrap around to 0 if at the end)
-    let nextIndex = (index + 1) % filenames.length;
+    if (index !== -1) {
+      // ✅ Calculate next song index (wrap around to 0 if at the end)
+      let nextIndex = (index + 1) % filenames.length;
 
-    // ✅ Get the filename of the next song
-    let nextTrack = filenames[nextIndex];
+      // ✅ Get the filename of the next song
+      let nextTrack = filenames[nextIndex];
 
-    // ✅ Play it
-    playMusic(nextTrack, true);
-  } else {
-    console.error("Current song not found in list.");
-  }
-});
+      // ✅ Play it
+      playMusic(nextTrack, true);
+    } else {
+      console.error("Current song not found in list.");
+    }
+  });
 
-// Add an event to volume
+  // Add an event to volume
 
   document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",
-    (e)=>{
-      console.log("setting volume to", e,e.target,e.target.value,"/100")
-      currentsong.volume = parseInt(e.target.value)/100
+    (e) => {
+      console.log("setting volume to", e, e.target, e.target.value, "/100")
+      currentsong.volume = parseInt(e.target.value) / 100
     })
 }
+
+// Add an Evantlistener to mute track
+
+document.querySelector(".volume>img").addEventListener("click", e => {
+  console.log(e.target)
+  if (e.target.src.includes("volume.svg")) {
+    e.target.src = e.target.src.replace("volume.svg", "mute.svg")
+    currentsong.volume = 0;
+    document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+  }
+  else {
+    e.target.src = e.target.src.replace("mute.svg", "volume.svg")
+    currentsong.volume = .1;
+    document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+  }
+})
