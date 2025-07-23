@@ -111,7 +111,7 @@
 
 }
 .cardcontainer :hover{
-    background-color: rgb(59, 58, 58);
+    /* background-color: rgb(59, 58, 58); */
     cursor: pointer;
     transition: all 0.9s;
      --a: 1;
@@ -139,7 +139,7 @@
 
 .play {
     position: absolute;
-    top: 150px;
+    top: 160px;
     right: 20px;
     opacity: var(--a);
     transition: all 1s ease-out;
@@ -393,6 +393,9 @@
     .button{
         width: 160px;
     }
+    .play{
+        top: 260px;
+    }
     
     @media (max-width: 1200px){
         .card{
@@ -403,9 +406,12 @@
     .card{
         width: 320px;
     }
+    .cardcontainer{
+
+    }
     
     .cardcontainer :hover{
-    background-color: rgb(59, 58, 58);
+    /* background-color: rgb(59, 58, 58); */
     cursor: pointer;
     transition: all 0.9s;
      --a: 1;
