@@ -194,6 +194,9 @@ async function main() {
     (e) => {
       console.log("setting volume to", e, e.target, e.target.value, "/100")
       currentsong.volume = parseInt(e.target.value) / 100
+      if(currentsong.volume>0){
+        document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
+      }
     })
 }
 
