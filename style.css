@@ -112,7 +112,7 @@
 
 }
 .cardcontainer :hover{
-    /* background-color: rgb(59, 58, 58); */
+    background-color: rgb(59, 58, 58);
     cursor: pointer;
     transition: all 0.9s;
      --a: 1;
@@ -412,7 +412,7 @@
     }
     
     .cardcontainer :hover{
-    /* background-color: rgb(59, 58, 58); */
+    background-color: rgb(59, 58, 58);
     cursor: pointer;
     transition: all 0.9s;
      --a: 1;
