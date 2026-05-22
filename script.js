@@ -152,42 +152,34 @@ async function main() {
     });
 
     // Next song
-    next.addEventListener("click", () => {
+   next.addEventListener("click", () => {
 
-        let currentSong = currentsong.src.split("/").pop();
+    let currentSong = decodeURIComponent(currentsong.src.split("/").pop());
 
-        let index = songs.indexOf(currentSong);
+    let index = songs.indexOf(currentSong);
 
-        if (index + 1 < songs.length) {
+    if (index !== -1) {
 
-            playMusic(songs[index + 1]);
+        let nextIndex = (index + 1) % songs.length;
 
-        }
-
-        else {
-
-            playMusic(songs[0]);
-        }
-    });
+        playMusic(songs[nextIndex]);
+    }
+});
 
     // Previous song
     previous.addEventListener("click", () => {
 
-        let currentSong = currentsong.src.split("/").pop();
+    let currentSong = decodeURIComponent(currentsong.src.split("/").pop());
 
-        let index = songs.indexOf(currentSong);
+    let index = songs.indexOf(currentSong);
 
-        if (index - 1 >= 0) {
+    if (index !== -1) {
 
-            playMusic(songs[index - 1]);
+        let prevIndex = (index - 1 + songs.length) % songs.length;
 
-        }
-
-        else {
-
-            playMusic(songs[songs.length - 1]);
-        }
-    });
+        playMusic(songs[prevIndex]);
+    }
+});
 
     // Volume
     let volumeSlider = document.querySelector(".range input");
