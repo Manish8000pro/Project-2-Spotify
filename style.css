@@ -11,7 +11,7 @@
     }
 
 * body {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.505);
     color: white;
 }
 
@@ -185,7 +185,7 @@
 .playbar {
     position: fixed;
     bottom: 30px;
-    background-color: rgb(60, 61, 60);
+    background-color: rgba(60, 61, 60, 0.708);
     width:  69vw;
     min-height: 30px;
     padding: 12px;
