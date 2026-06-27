@@ -187,27 +187,23 @@
 .playbar{
     position: fixed;
 
-    left: 57%;
+    left: 50%;
     transform: translateX(-50%);
     bottom: 20px;
 
-    width: min(900px, 70vw);
+    width: min(1000px, calc(100vw - 40px));
 
-    padding: 15px 20px;
+    padding: 15px;
 
-    background: rgba(18, 18, 18, 0);
-
+    background: rgba(30,30,30,.65);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
 
-    border-radius:18px;
+    box-sizing:border-box;
 
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.45);
-
-    z-index:100;
+    z-index:1000;
 }
 
 .songbuttons {
@@ -336,7 +332,7 @@
 
 }
 
-.seekbar {
+/* .seekbar {
     height: 2px;
     width: 97%;
     border: 2px solid white;
@@ -347,6 +343,18 @@
     margin: 4px;
     cursor: pointer;
 
+} */
+.seekbar{
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 8px;
+
+    height: 4px;
+    background: white;
+    border-radius: 50px;
+
+    cursor: pointer;
 }
 
 .circle {
@@ -364,13 +372,20 @@
     cursor: pointer;
 }
 
+.abovebar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding-bottom:12px;
+}
 
-.abovebar {
+/* .abovebar {
     display: flex;
     justify-content: space-between;
     padding: 0, 12px;
     margin: 20px ,0px;
-}
+} */
 
 @media (max-width: 1400px) {
     .left {
@@ -404,12 +419,12 @@
         gap: 10px;
     }
 
-    .playbar {
+    /* .playbar {
         width: calc(50vw - 20vw);
-    }
-    .seekbar{
+    } */
+    /* .seekbar{
         width: calc(100vw - 20vw);
-    }
+    } */
     .card{
         width: 90vw;
     }
@@ -417,12 +432,12 @@
         margin: 0;
         justify-content: center;
     }
-    .playbar{
+    /* .playbar{
         width: calc(100vw - 5vw);
-    }
-    .seekbar{
+    } */
+    /* .seekbar{
         width: calc(100vw - 5vw);
-    }
+    } */
 
     .hamburger {
         display: block;
@@ -478,5 +493,61 @@
      --a: 1;
 }
 
-    
+}
+/* playbar responsive */
+@media (max-width:768px){
+
+    .playbar{
+        width: calc(100% - 20px);
+        bottom:10px;
+        padding:10px;
+    }
+
+    .abovebar{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+    }
+
+    .songbuttons{
+        width:100%;
+        justify-content:center;
+    }
+
+    .songinfo,
+    .songtime{
+        width:auto;
+        text-align:center;
+    }
+
+    .timevol{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .seekbar{
+        left:8px;
+        right:8px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .songbuttons img{
+        width:24px;
+    }
+
+    .songinfo{
+        font-size:14px;
+    }
+
+    .songtime{
+        font-size:13px;
+    }
+
+    .volume input{
+        width:100px;
+    }
+
 }
