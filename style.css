@@ -20,7 +20,8 @@
 }
 
 .right {
-    width: 75vw;
+    /* width: 75vw; */
+    width:min(1000px, calc(100vw - 40px));
 }
 
 .home ul li {
@@ -187,7 +188,7 @@
 .playbar{
     position: fixed;
 
-    left: 50%;
+    left: 58%;
     transform: translateX(-50%);
     bottom: 20px;
 
@@ -195,7 +196,7 @@
 
     padding: 15px;
 
-    background: rgba(30,30,30,.65);
+    background: rgba(30, 30, 30, 0.258);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
@@ -399,7 +400,8 @@
     }
 
     .right {
-        width: 100vw;
+        width: 100%;
+        margin: 0;
     }
 
     .left.open {
@@ -442,9 +444,9 @@
     .hamburger {
         display: block;
     }
-    .right{
+    /* .right{
         margin: 0;
-    }
+    } */
     .close{
         display: block;
     }
@@ -498,10 +500,18 @@
 @media (max-width:768px){
 
     .playbar{
-        width: calc(100% - 20px);
-        bottom:10px;
-        padding:10px;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+
+        width: calc(100vw - 20px);
+        max-width: 100%;
+
+        padding: 10px;
+        box-sizing: border-box;
     }
+
 
     .abovebar{
         flex-direction:column;
@@ -548,6 +558,43 @@
 
     .volume input{
         width:100px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .playbar{
+        width: calc(100vw - 20px);
+        left:50%;
+        transform:translateX(-50%);
+        bottom:10px;
+    }
+
+    .seekbar{
+        left:10px;
+        right:10px;
+    }
+
+    .abovebar{
+        flex-direction:column;
+        gap:15px;
+        align-items:center;
+    }
+
+    .songbuttons{
+        justify-content:center;
+        width:100%;
+    }
+
+    .timevol{
+        flex-direction:column;
+    }
+
+    .songinfo,
+    .songtime{
+        width:auto;
+        text-align:center;
     }
 
 }
